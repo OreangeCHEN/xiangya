@@ -1,0 +1,27 @@
+
+<table class="table" width="100%" style="table-layout:fixed;overflow: hidden; white-space: nowrap; text-overflow:ellipsis;">
+    <tr style="overflow: hidden; white-space: nowrap; text-overflow:ellipsis;">
+        <th width="261px">标题</th>
+        <th width="261px">作者</th>
+        <th width="261px">时间</th>
+        <th width="320px">分类</th>
+        <th align="left">&nbsp;&nbsp;&nbsp;操作</th>
+    </tr>
+    {foreach $data as $v}
+    <tr>
+        <td title="{$v.title}" width="261px">{$v.title}</td>
+        <td title="{$v.author}" width="261px">{$v.author}</td>
+        <td title="{$v.time}"  width="261px">{$v.time}</td>
+        <td title="{$v.kind}" width="320px">{$v.kind}</td>
+        <td align="left">
+            <div class="layout-btn">
+                <a href="/api/Article/edit?id={$v.id}" class="btn-primary">编辑</a>
+                <a class="btn-danger" href="javascript:if(confirm('确认删除吗?'))window.location='/api/Article/delete?id={$v.id}'">删除</a>
+            </div>
+        </td>
+    </tr>
+    {/foreach}
+
+</table>
+
+

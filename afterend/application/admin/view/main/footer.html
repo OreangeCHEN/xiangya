@@ -1,0 +1,45 @@
+
+</main>
+</div>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+
+
+<script src="/js/jquery-1.10.2.js"></script>
+<script src="/js/froala_editor.min.js"></script>
+<!--[if lt IE 9]>
+<script src="/js/froala_editor_ie8.min.js"></script>
+<![endif]-->
+<script src="/js/plugins/tables.min.js"></script>
+<script src="/js/plugins/lists.min.js"></script>
+<script src="/js/plugins/colors.min.js"></script>
+<script src="/js/plugins/media_manager.min.js"></script>
+<script src="/js/plugins/font_family.min.js"></script>
+<script src="/js/plugins/font_size.min.js"></script>
+<script src="/js/plugins/block_styles.min.js"></script>
+<script src="/js/plugins/video.min.js"></script>
+
+<script>
+    $(function(){
+        $('#edit').editable({inlineMode: false, alwaysBlank: true})
+    });
+    $(document).ready(function(){
+        $("#sub").click(function(){
+            if($("#title").val()==""){
+                alert("请输入标题");
+            }
+            if($("#banner").val()==""){
+                alert("请上传封面图片");
+            }
+            if($("#author").val()==""){
+                alert("请输入作者");
+            }
+            //			  var patt1=new RegExp("<div\scontenteditable.*>\n?<p>.*<\/p><\/div>");
+            else{$("#article").val($('.froala-element').html())}
+
+        });
+    });
+</script>
+</body>
+
+</html>

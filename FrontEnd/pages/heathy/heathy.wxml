@@ -1,0 +1,182 @@
+<view class='page'>
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+  <view class="modalDlg" wx:if="{{showModal}}">
+    <image class='modalDlg_image' src="/image/goods/13.gif"></image>
+    <text class='.modalDlg_text'>正在加载...</text>
+  </view>
+  <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}" bindscrolltolower="loadMore">
+    <view class="tab-item {{currentTab == pageItems[0].page_id?'active':''}}" data-current="{{pageItems[0].page_id}}" bindtap="swichNav">{{pageItems[0].page_name}}</view>
+    <view class="tab-item {{currentTab == pageItems[1].page_id?'active':''}}" data-current="{{pageItems[1].page_id}}" bindtap="swichNav">{{pageItems[1].page_name}}</view>
+    <view class="tab-item {{currentTab == pageItems[2].page_id?'active':''}}" data-current="{{pageItems[2].page_id}}" bindtap="swichNav">{{pageItems[2].page_name}}</view>
+    <view class="tab-item {{currentTab == pageItems[3].page_id?'active':''}}" data-current="{{pageItems[3].page_id}}" bindtap="swichNav">{{pageItems[3].page_name}}</view>
+    <view class="tab-item {{currentTab == pageItems[4].page_id?'active':''}}" data-current="{{pageItems[4].page_id}}" bindtap="swichNav">{{pageItems[4].page_name}}</view>
+  </scroll-view>
+  <swiper class="tab-content" current="{{currentTab}}" duration="500" bindchange="switchTab" style="height:{{winHeight}}rpx">
+    <!--热点新闻-->
+    <swiper-item catchtouchmove='stopTouchMove'>
+      <scroll-view lower-threshold="0" scroll-y="true" class="scoll-h" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+        <!--中部图片区-->
+        <view class='center' bindtap='detail' data-article-title='{{pageItems[0].banner.items[0].title}}' data-article-id="{{pageItems[0].banner.id}}" data-article-author='{{pageItems[0].banner.items[0].author}}' data-article-time='{{pageItems[0].banner.items[0].update_time}}'>
+          <image class='center_image' src="{{pageItems[0].banner.items[0].img.url}}"></image>
+          <view class='center_title'></view>
+          <text class='center_font'>{{pageItems[0].banner.items[0].title}}</text>
+        </view>
+        <!--底部文章区-->
+        <view class='bottom'>
+          <view class='bottom_nav'>
+            <block wx:for="{{pageItems[0].part}}">
+              <view class="nav_part {{pageItems[0].index == item.part_id ? 'active' : ''}}" data-id="{{item.part_id}}" bindtap="switchPartTab">{{item.part_name}}
+              </view>
+            </block>
+          </view>
+          <view class='bottom_article'>
+            <view class='article'>
+              <block wx:for="{{pageItems[0].article}}" wx:if="{{pageItems[0].index==0}}">
+                <view class='article_part' bindtap='detail' data-article-id="{{item.id}}" data-article-title='{{item.title}}' data-article-main="{{item.article}}" data-article-author='{{item.author}}' data-article-time='{{item.time}}'>
+                  <image src="{{item.image}}" class='article_image'></image>
+                  <view class='text'>
+                    <view class='title'>{{item.title}}</view>
+                    <view class='summary'>{{item.summary}}</view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <!--妇婴保健-->
+    <swiper-item catchtouchmove='stopTouchMove'>
+      <scroll-view lower-threshold="-1" scroll-y="true" class="scoll-h" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+        <!--中部图片区-->
+        <view class='center' bindtap='detail' data-article-title='{{pageItems[1].banner.items[0].title}}' data-article-id="{{pageItems[1].banner.id}}" data-article-author='{{pageItems[1].banner.items[0].author}}' data-article-time='{{pageItems[1].banner.items[0].update_time}}'>
+          <image class='center_image' src="{{pageItems[1].banner.items[0].img.url}}"></image>
+          <view class='center_title'></view>
+          <text class='center_font'>{{pageItems[1].banner.items[0].title}}</text>
+        </view>
+        <!--底部文章区-->
+        <view class='bottom'>
+          <view class='bottom_nav'>
+            <block wx:for="{{pageItems[1].part}}">
+              <view class="nav_part {{pageItems[1].index == item.part_id ? 'active' : ''}}" data-id="{{item.part_id}}" bindtap="switchPartTab">{{item.part_name}}
+              </view>
+            </block>
+          </view>
+          <view class='bottom_article'>
+            <view class='article'>
+              <block wx:for="{{pageItems[1].article}}" wx:if="{{pageItems[1].index==0}}">
+                <view class='article_part' bindtap='detail' data-article-id="{{item.id}}" data-article-title='{{item.title}}' data-article-main="{{item.article}}" data-article-author='{{item.author}}' data-article-time='{{item.time}}'>
+                  <image src="{{item.image}}" class='article_image'></image>
+                  <view class='text'>
+                    <view class='title'>{{item.title}}</view>
+                    <view class='summary'>{{item.summary}}</view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <!--疾病防治-->
+    <swiper-item catchtouchmove='stopTouchMove'>
+      <scroll-view lower-threshold="0" scroll-y="true" class="scoll-h" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+        <!--中部图片区-->
+        <view class='center' bindtap='detail' data-article-title='{{pageItems[2].banner.items[0].title}}' data-article-id="{{pageItems[2].banner.id}}" data-article-author='{{pageItems[2].banner.items[0].author}}' data-article-time='{{pageItems[2].banner.items[0].update_time}}'>
+          <image class='center_image' src="{{pageItems[2].banner.items[0].img.url}}"></image>
+          <view class='center_title'></view>
+          <view class='center_font'>{{pageItems[2].banner.items[0].title}}</view>
+        </view>
+        <!--底部文章区-->
+        <view class='bottom'>
+          <view class='bottom_nav'>
+            <block wx:for="{{pageItems[2].part}}">
+              <view class="nav_part {{pageItems[2].index == item.part_id ? 'active' : ''}}" data-id="{{item.part_id}}" bindtap="switchPartTab">{{item.part_name}}
+              </view>
+            </block>
+          </view>
+          <view class='bottom_article'>
+            <view class='article'>
+              <block wx:for="{{pageItems[2].article}}" wx:if="{{pageItems[2].index==0}}">
+                <view class='article_part' bindtap='detail' data-article-id="{{item.id}}" data-article-title='{{item.title}}' data-article-main="{{item.article}}" data-article-author='{{item.author}}' data-article-time='{{item.time}}'>
+                  <image src="{{item.image}}" class='article_image'></image>
+                  <view class='text'>
+                    <view class='title'>{{item.title}}</view>
+                    <view class='summary'>{{item.summary}}</view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <!--饮食保健-->
+    <swiper-item catchtouchmove='stopTouchMove'>
+      <scroll-view lower-threshold="0" scroll-y="true" class="scoll-h" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+        <!--中部图片区-->
+        <view class='center' bindtap='detail' data-article-title='{{pageItems[3].banner.items[0].title}}' data-article-id="{{pageItems[3].banner.id}}" data-article-author='{{pageItems[3].banner.items[0].author}}' data-article-time='{{pageItems[3].banner.items[0].update_time}}'>
+          <image class='center_image' src="{{pageItems[3].banner.items[0].img.url}}"></image>
+          <view class='center_title'></view>
+          <text class='center_font'>{{pageItems[3].banner.items[0].title}}</text>
+        </view>
+        <!--底部文章区-->
+        <view class='bottom'>
+          <view class='bottom_nav'>
+            <block wx:for="{{pageItems[3].part}}">
+              <view class="nav_part {{pageItems[3].index == item.part_id ? 'active' : ''}}" data-id="{{item.part_id}}" bindtap="switchPartTab">{{item.part_name}}
+              </view>
+            </block>
+          </view>
+          <view class='bottom_article'>
+            <view class='article'>
+              <block wx:for="{{pageItems[3].article}}" wx:if="{{pageItems[3].index==0}}">
+                <view class='article_part' bindtap='detail' data-article-id="{{item.id}}" data-article-title='{{item.title}}' data-article-main="{{item.article}}" data-article-author='{{item.author}}' data-article-time='{{item.time}}'>
+                  <image src="{{item.image}}" class='article_image'></image>
+                  <view class='text'>
+                    <view class='title'>{{item.title}}</view>
+                    <view class='summary'>{{item.summary}}</view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <!--心理健康-->
+    <swiper-item catchtouchmove='stopTouchMove'>
+      <scroll-view lower-threshold="0" scroll-y="true" class="scoll-h" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
+        <!--中部图片区-->
+        <view class='center' bindtap='detail' data-article-title='{{pageItems[4].banner.items[0].title}}' data-article-id="{{pageItems[4].banner.id}}" data-article-author='{{pageItems[4].banner.items[0].author}}' data-article-time='{{pageItems[4].banner.items[0].update_time}}'>
+          <image class='center_image' src="{{pageItems[4].banner.items[0].img.url}}"></image>
+          <view class='center_title'></view>
+          <text class='center_font'>{{pageItems[4].banner.items[0].title}}</text>
+        </view>
+        <!--底部文章区-->
+        <view class='bottom'>
+          <view class='bottom_nav'>
+            <block wx:for="{{pageItems[4].part}}">
+              <view class="nav_part {{pageItems[4].index == item.part_id ? 'active' : ''}}" data-id="{{item.part_id}}" bindtap="switchPartTab">{{item.part_name}}
+              </view>
+            </block>
+          </view>
+          <view class='bottom_article'>
+            <view class='article'>
+              <block wx:for="{{pageItems[4].article}}" wx:if="{{pageItems[4].index==0}}">
+                <view class='article_part' bindtap='detail' data-article-id="{{item.id}}" data-article-title='{{item.title}}' data-article-main="{{item.article}}" data-article-author='{{item.author}}' data-article-time='{{item.time}}'>
+                  <image src="{{item.image}}" class='article_image'></image>
+                  <view class='text'>
+                    <view class='title'>{{item.title}}</view>
+                    <view class='summary'>{{item.summary}}</view>
+                  </view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+  <view class='bottom_text' wx:if="{{loading}}">没有更多信息了</view>
+</view>

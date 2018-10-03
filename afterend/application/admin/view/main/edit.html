@@ -1,0 +1,141 @@
+
+    <style>
+        body {
+            text-align: center;
+            margin: 0;
+            font-family: Georgia, "Times New Roman", Times, serif;
+        }
+
+        section {
+            width: 95%;
+
+            margin: auto;
+            text-align: left;
+        }
+        form{
+            width: 50%;
+            margin: auto;
+            padding: 20px 60px 10px 50px;
+
+            -moz-border-radius: 8px;
+            -webkit-border-radius: 8px;
+            border-radius: 8px;
+            -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3);
+            -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,.3);
+            box-shadow: 0 1px 5px 0 rgba(0,0,0,.3);
+            text-align: center;
+
+
+        }
+
+        .btn {
+            display: inline-block;
+            height: 40%;
+
+            zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+            *display: inline;
+            vertical-align: baseline;
+            margin: 30px 2px;
+            outline: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font: 14px/100% Arial, Helvetica, sans-serif;
+            padding: .5em 2em .55em;
+            text-shadow: 0 1px 1px rgba(0,0,0,.3);
+            -webkit-border-radius: .5em;
+            -moz-border-radius: .5em;
+            border-radius: .5em;
+            -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+            box-shadow: 0 1px 2px rgba(0,0,0,.2);
+            color: #fff;
+            background-color: #286090;
+            border-color:#204d74;
+        }
+        .btn:hover {
+            text-decoration: none;
+        }
+        .btn:active {
+            position: relative;
+            top: 1px;
+
+        }
+        .froala-element{
+            min-height: 450px!important;
+        }
+        td{
+            height: 30px;
+        }
+        .inp{
+            background: #eaeaea;
+            order: #F00 solid 1px;
+            width: 100%;
+            height: 30px;
+            background: #fcfcfc;
+            border: 1px solid #ddd;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            -moz-box-shadow: 0 1px 3px 0 rgba(0,0,0,.1) inset;
+            -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.1) inset;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,.1) inset;
+            font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+            color: #888;
+            font-size: 16px;
+
+        }
+        select{
+            background: #eaeaea;
+            order: #F00 solid 1px;
+            width: 101%;
+            z-index: 99999;
+            height: 34px;
+            background: #fcfcfc;
+            border: 1px solid #ddd;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            border-radius: 2px;
+            -moz-box-shadow: 0 1px 3px 0 rgba(0,0,0,.1) inset;
+            -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.1) inset;
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,.1) inset;
+            font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+            color: #888;
+            font-size: 16px;
+
+        }
+
+
+    </style>
+<center><font size="+5" color="#178AC4"><strong>编辑文章</strong></font></center>
+<hr>
+<form action="/api/Article/update" method="post"  enctype="multipart/form-data" onsubmit="recheck()">
+    <table>
+        <input type="hidden" name="id" value="{$data.id}" />
+        <tr><td style="width: 100px;text-align: center">题目:</td><td><input class="inp" type="text" value="{$data.title}" name="title" style="width: 100%" id="title"></td></tr>
+        <tr><td style="width: 100px">插图:</td><td><input class="inp" type="file" value="{$data.image}" style="219px" name="image" id="banner"></td></tr>
+        <tr><td style="width: 100px;text-align: center">作者:</td><td><input class="inp" type="text" value="{$data.author}" name="author" style="width:120" id="author"></td></tr>
+        <tr><td style="width: 100px;text-align: center">链接:</td><td><input class="inp" type="text" value="{$data.author_url}" name="author_url" style="width:120"></td></tr>
+        <tr><td style="width: 100px;text-align: center">摘要:</td><td><input class="inp" type="text" value="{$data.summary}" name="summary" style="width:120"></td></tr>
+        <tr><td>种类:</td>
+           <td><select id="kind" name="kind" value="{$data.kind}" >
+                <option value="{$data.kind}" selected="selected">{$data.kind}</option>
+                <option value="rdxw">热点新闻</option>
+                <option value="fybj">妇婴保健</option>
+                <option value="jbfz">疾病防治</option>
+                <option value="ysbj">饮食保健</option>
+                <option value="xljk">心理健康</option>
+           </select></td></tr>
+    </table>
+    <div style="background: #FFFFFF;width: 100%;">
+        <section id="editor" name="article">
+            <div id='edit' style="margin-top: 30px">
+                {$data.article}
+            </div>
+
+        </section></div>
+
+    <input type="hidden" name="article" value="" id='article'/>
+    <input type="submit" id="sub" value="Submit" class="btn" >
+    <input type="reset" id="res" value="Reset" class="btn">
+</form>

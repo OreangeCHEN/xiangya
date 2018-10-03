@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>湘雅口腔医院小程序后台管理界面</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <!--<link rel="stylesheet" type="text/css" href="/static/css/style_lf.css" />-->
+  <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+  <link href="/css/froala_editor.min.css" rel="stylesheet" type="text/css">
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+  <link href="/css/froala_editor.min.css" rel="stylesheet" type="text/css">
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+  <link href="/css/froala_editor.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <!-- 头部 -->
+  <header class="layout-header">
+    <a class="layout-logo">
+      <!-- 视情况自个选择是否一直logo图标 -->
+      <span  style="vertical-align:center;float:left" class="layout-logo-txt"><img src="/images/XY.png" width="50px" height="45px" style="float: left;margin:0;padding: 0" ><span>湘雅口腔医学院</span></span>
+      <span class="layout-logo-icon" ><img src="/images/XY.png" width="50px" height="45px"style="padding: 5% 0 0 0"></span>
+    </a>
+    <nav class="layout-nav clearfloat">
+      <a class="layout-menu">
+        <i class="icon-menu" ><img src="/images/menu.png" width="60%" height="64%" style="padding: 18% 0 0 0"></i>
+      </a>
+      <a class="layout-logout" href="javascript:if(confirm('确认退出登录吗?'))window.location='../../admin/login/logout'" >
+        <span style="color: #f5f5f5">退出登录</span>
+      </a>
+    </nav>
+  </header>
+  
+  <!-- 主体内容 -->
+  <div class="layout-body">
+    
+    <!-- 左边导航 -->
+    <section class="layout-body-side">
+      <ul class="layout-side-list">
+        <li>
+          <a class="layout-side-item" href="../../api/Article" >
+            <span class="layout-side-item-icon" style="display: none"><img src="/images/article.png" width="17px" height="17px" style="padding: 3% 0 0 0"></span>
+            <span class="layout-side-item-label"><img src="/images/article.png" width="10%" height="15%" style="float: left;padding: 0 3% 0 3%">文章编辑列表</span>
+          </a>
+        </li>
+        <li>
+          <a class="layout-side-item" href="../../api/Article/create" >
+            <span class="layout-side-item-icon" style="display: none"><img src="/images/pen.png" width="17px" height="17px" style="padding: 3% 0 0 0"></span>
+            <span class="layout-side-item-label"><img src="/images/pen.png" width="10%" height="15%" style="padding: 0 3% 0 3%;float: left">文章添加</span>
+          </a>
+        </li>
+        <li>
+            <a class="layout-side-item" href="../../api/v1.Bannerupload/edit">
+              <span class="layout-side-item-icon" style="display: none"><img src="/images/banner.png" width="17px" height="17px" style="padding: 3% 0 0 0"></span>
+              <span class="layout-side-item-label"><img src="/images/banner.png" width="10%" height="15%" style="padding: 0 3% 0 3%;float: left">头条更新</span>
+            </a>
+          </li>
+      </ul>
+    </section>
+
+    <!-- 右边页面主要内容 -->
+    <main class="layout-body-main">
